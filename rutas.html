@@ -63,16 +63,17 @@
           <div>
             <div class="form-card" style="position: sticky; top: 6rem;">
               <span class="badge badge-forest" style="margin-bottom: 0.75rem;">Calculadora Interactiva</span>
-              <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Planificador de Expedición</h2>
+              <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: red;" >Planificador de Expedición</h2>
               <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">
                 Calcula el presupuesto estimado de logística y el potencial de avistamiento según tu itinerario.
               </p>
 
               <form id="expeditionForm" onsubmit="event.preventDefault();">
                 <div class="form-group">
-                  <label for="planRegion" class="form-label">Circuito / Región a Explorar:</label>
+                  <label for="planRegion" class="form-label" style="color: red;">Circuito / Región a Explorar:</label>
                   <select id="planRegion" class="form-control">
                     <option value="selva" selected>Ruta Norte / Amazonía (Abra Patricia - Tarapoto)</option>
+                    <option value="selva" selected>Ruta Este / Lima (Lima - Huacho)</option>
                     <option value="sierra">Ruta Sur / Andes y Manu (Cusco - Colca - Tambopata)</option>
                     <option value="costa">Ruta Costera e Islas (Paracas - Pantanos de Villa)</option>
                   </select>
