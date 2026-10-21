@@ -1,0 +1,1212 @@
+/* ==========================================================================
+   ALAS DEL PERÚ - PORTAL DE AVES DEL PERÚ
+   Hoja de Estilos Principal (CSS3 Moderno / Vanilla CSS)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES Y SISTEMA DE DISEÑO (Design Tokens)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Paleta Naturaleza Peruana - Modo Claro (Default) */
+  --bg-primary: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-inverse: #ffffff;
+
+  /* Colores de Marca Inspirados en la Biodiversidad */
+  --brand-forest: #15803d;       /* Verde Selva / Amazonía */
+  --brand-forest-dark: #14532d;
+  --brand-forest-light: #86efac;
+  --brand-forest-soft: #dcfce7;
+
+  --brand-gallito: #ea580c;      /* Naranja/Rojo Gallito de las Rocas */
+  --brand-gallito-hover: #c2410c;
+  --brand-gallito-soft: #ffedd5;
+
+  --brand-condor: #0284c7;       /* Azul Cielo Andino */
+  --brand-condor-soft: #e0f2fe;
+
+  --brand-amber: #d97706;        /* Ámbar / Oro Inca */
+  --brand-amber-soft: #fef3c7;
+
+  --border-light: #e2e8f0;
+  --border-focus: #15803d;
+
+  /* Estados de Conservación */
+  --status-critico: #ef4444;     /* Peligro Crítico */
+  --status-vulnerable: #f59e0b;  /* Vulnerable */
+  --status-comun: #10b981;       /* Preocupación Menor */
+  --status-endemico: #8b5cf6;    /* Especie Endémica */
+
+  /* Sombras y Elevaciones */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+
+  /* Bordes y Transiciones */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Outfit', system-ui, -apple-system, sans-serif;
+  --max-width: 1240px;
+}
+
+/* --------------------------------------------------------------------------
+   2. TEMA OSCURO (Dark Mode)
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] {
+  --bg-primary: #090d16;
+  --bg-surface: #111827;
+  --bg-surface-elevated: #1f2937;
+  --bg-subtle: #1a2234;
+  --bg-glass: rgba(17, 24, 39, 0.88);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-inverse: #0f172a;
+
+  --border-light: #2d3748;
+  --border-focus: #4ade80;
+
+  --brand-forest: #22c55e;
+  --brand-forest-soft: rgba(34, 197, 94, 0.15);
+  --brand-gallito-soft: rgba(234, 88, 12, 0.18);
+  --brand-condor-soft: rgba(2, 132, 199, 0.18);
+  --brand-amber-soft: rgba(217, 119, 6, 0.18);
+
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   3. RESET Y BASE GLOBAL
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+h1 { font-size: clamp(2rem, 4vw + 1rem, 3.25rem); }
+h2 { font-size: clamp(1.6rem, 3vw + 0.5rem, 2.3rem); }
+h3 { font-size: clamp(1.25rem, 2vw + 0.3rem, 1.6rem); }
+h4 { font-size: 1.15rem; }
+
+p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. NAVEGACIÓN Y HEADER (Cabecera Global)
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.5rem;
+  gap: 1rem;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--text-primary);
+}
+
+.brand-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--brand-forest), #16a34a);
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 10px rgba(21, 128, 61, 0.3);
+}
+
+.brand-logo span span {
+  color: var(--brand-gallito);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--brand-forest);
+  background-color: var(--brand-forest-soft);
+}
+
+.nav-link.active {
+  color: #ffffff;
+  background-color: var(--brand-forest);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Selector de Tema */
+.theme-toggle {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  background: var(--brand-forest-soft);
+  color: var(--brand-forest);
+  transform: rotate(15deg);
+}
+
+/* Menú móvil */
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. BOTONES Y COMPONENTES REUTILIZABLES
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand-forest), #16a34a);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(21, 128, 61, 0.35);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--brand-forest-dark), #15803d);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(21, 128, 61, 0.45);
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, var(--brand-gallito), #f97316);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
+}
+
+.btn-accent:hover {
+  background: linear-gradient(135deg, var(--brand-gallito-hover), #ea580c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.45);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--border-light);
+  color: var(--text-primary);
+}
+
+.btn-outline:hover {
+  border-color: var(--brand-forest);
+  color: var(--brand-forest);
+  background-color: var(--brand-forest-soft);
+}
+
+.btn-sm {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.btn-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* Badges / Etiquetas */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge-critico {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: var(--status-critico);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.badge-vulnerable {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: var(--status-vulnerable);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-comun {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--status-comun);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-endemico {
+  background-color: rgba(139, 92, 246, 0.15);
+  color: var(--status-endemico);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.badge-forest {
+  background-color: var(--brand-forest-soft);
+  color: var(--brand-forest);
+}
+
+/* --------------------------------------------------------------------------
+   6. HERO SECTIONS & BANNERS
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  padding: 4.5rem 0 3.5rem;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--brand-forest-soft);
+  color: var(--brand-forest);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.hero-title {
+  margin-bottom: 1.25rem;
+  line-height: 1.15;
+}
+
+.hero-title .highlight {
+  background: linear-gradient(135deg, var(--brand-forest), var(--brand-gallito));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  max-width: 540px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.hero-visual {
+  position: relative;
+}
+
+.hero-card-featured {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-light);
+  background: var(--bg-surface);
+}
+
+.hero-card-featured img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.hero-card-featured:hover img {
+  transform: scale(1.03);
+}
+
+.hero-card-overlay {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  padding: 2rem 1.5rem 1.25rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+  color: #ffffff;
+}
+
+.hero-card-overlay h3 {
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+.hero-card-overlay p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+}
+
+/* Banner de Páginas Internas */
+.page-banner {
+  padding: 3.5rem 0 2.5rem;
+  background: linear-gradient(180deg, var(--bg-subtle) 0%, var(--bg-primary) 100%);
+  border-bottom: 1px solid var(--border-light);
+  text-align: center;
+}
+
+.page-banner h1 {
+  margin-bottom: 0.75rem;
+}
+
+.page-banner p {
+  max-width: 650px;
+  margin-inline: auto;
+  font-size: 1.1rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. SECCIÓN DE ESTADÍSTICAS Y CARDS
+   -------------------------------------------------------------------------- */
+.stats-section {
+  padding: 2.5rem 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--brand-forest);
+}
+
+.stat-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-md);
+  background: var(--brand-forest-soft);
+  color: var(--brand-forest);
+  display: grid;
+  place-items: center;
+  font-size: 1.75rem;
+  flex-shrink: 0;
+}
+
+.stat-info h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  color: var(--brand-forest);
+}
+
+.stat-info p {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   8. CATÁLOGO DE ESPECIES (especies.html)
+   -------------------------------------------------------------------------- */
+.catalog-toolbar {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 3rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-light);
+  background-color: var(--bg-primary);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--brand-forest);
+  box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.15);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1.15rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.filter-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-right: 0.25rem;
+}
+
+.filter-btn {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn:hover {
+  background: var(--brand-forest-soft);
+  color: var(--brand-forest);
+  border-color: var(--brand-forest);
+}
+
+.filter-btn.active {
+  background: var(--brand-forest);
+  color: #ffffff;
+  border-color: var(--brand-forest);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.bird-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.bird-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(21, 128, 61, 0.4);
+}
+
+.card-img-wrapper {
+  position: relative;
+  height: 230px;
+  overflow: hidden;
+  background-color: var(--bg-subtle);
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.bird-card:hover .card-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.card-badges {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  z-index: 2;
+}
+
+.card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.bird-scientific {
+  font-style: italic;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.bird-name {
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.bird-desc {
+  font-size: 0.925rem;
+  margin-bottom: 1.25rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.bird-meta {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meta-item {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+}
+
+.meta-item strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------------
+   9. MODAL INTERACTIVO DE FICHA TÉCNICA
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-light);
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-overlay.active .modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  border: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition);
+}
+
+.modal-close:hover {
+  background: var(--brand-gallito);
+}
+
+.modal-header-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.modal-content {
+  padding: 1.75rem;
+}
+
+.sound-player {
+  background: var(--bg-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.25rem 0;
+  border: 1px solid var(--border-light);
+}
+
+.sound-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sound-waves {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 22px;
+}
+
+.sound-bar {
+  width: 4px;
+  background: var(--brand-forest);
+  border-radius: 2px;
+  height: 6px;
+  transition: height 0.2s ease;
+}
+
+.sound-waves.playing .sound-bar:nth-child(1) { animation: wave 0.8s ease-in-out infinite 0.1s; }
+.sound-waves.playing .sound-bar:nth-child(2) { animation: wave 0.8s ease-in-out infinite 0.3s; }
+.sound-waves.playing .sound-bar:nth-child(3) { animation: wave 0.8s ease-in-out infinite 0.5s; }
+.sound-waves.playing .sound-bar:nth-child(4) { animation: wave 0.8s ease-in-out infinite 0.2s; }
+
+@keyframes wave {
+  0%, 100% { height: 6px; }
+  50% { height: 22px; }
+}
+
+/* --------------------------------------------------------------------------
+   10. FORMULARIOS Y ENTRADAS (Forms & Inputs)
+   -------------------------------------------------------------------------- */
+.form-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-md);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.925rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.975rem;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--brand-forest);
+  box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.15);
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-hint {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   11. PLANIFICADOR DE RUTAS (rutas.html)
+   -------------------------------------------------------------------------- */
+.planner-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.route-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  transition: var(--transition);
+}
+
+.route-card:hover {
+  border-color: var(--brand-forest);
+  box-shadow: var(--shadow-md);
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.5rem;
+  border-bottom: 1px solid var(--border-light);
+  cursor: pointer;
+}
+
+.checklist-item input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--brand-forest);
+  cursor: pointer;
+}
+
+.checklist-item.completed span {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   12. AVISTAMIENTOS Y MURO COMUNITARIO (avistamientos.html)
+   -------------------------------------------------------------------------- */
+.sightings-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.preview-box {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px dashed var(--border-light);
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+}
+
+.sightings-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sighting-entry {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.25rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.sighting-entry-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.sighting-avatar {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--brand-forest-soft);
+  color: var(--brand-forest);
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   13. ACORDEÓN DE PREGUNTAS FRECUENTES (contacto.html)
+   -------------------------------------------------------------------------- */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.accordion-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.accordion-header {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-weight: 700;
+  user-select: none;
+}
+
+.accordion-header:hover {
+  background-color: var(--bg-subtle);
+}
+
+.accordion-icon {
+  transition: transform 0.3s ease;
+  font-size: 1.25rem;
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding-inline: 1.5rem;
+}
+
+.accordion-item.active .accordion-body {
+  padding-bottom: 1.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   14. NOTIFICACIONES TOAST
+   -------------------------------------------------------------------------- */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border-left: 5px solid var(--brand-forest);
+  border-top: 1px solid var(--border-light);
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.4rem;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 290px;
+  pointer-events: auto;
+  transform: translateX(120%);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toast.show {
+  transform: translateX(0);
+}
+
+.toast-icon {
+  font-size: 1.35rem;
+  color: var(--brand-forest);
+}
+
+/* --------------------------------------------------------------------------
+   15. PIE DE PÁGINA (Footer Global)
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-light);
+  padding: 4.5rem 0 2rem;
+  margin-top: 5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.footer-brand p {
+  margin: 1rem 0 1.5rem;
+  font-size: 0.95rem;
+}
+
+.footer-col h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  font-size: 0.925rem;
+}
+
+.footer-links a:hover {
+  color: var(--brand-forest);
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border-light);
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   16. ANIMACIONES & RESPONSIVIDAD
+   -------------------------------------------------------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+  .hero-grid,
+  .planner-grid,
+  .sightings-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    height: 4rem;
+  }
+  .main-nav {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-light);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 0.75rem;
+    box-shadow: var(--shadow-xl);
+    display: none;
+  }
+  .main-nav.open {
+    display: flex;
+  }
+  .nav-link {
+    width: 100%;
+    text-align: center;
+  }
+  .mobile-menu-btn {
+    display: block;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

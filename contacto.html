@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto y Voluntariado — Alas del Perú</title>
+  <meta name="description" content="Ponte en contacto con la red de conservación de aves del Perú. Únete como voluntario, registra tu reserva o resuelve tus dudas con nuestro equipo ornitológico.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="site-header" id="mainHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Alas del Perú - Inicio">
+        <div class="brand-icon">🦜</div>
+        <span>Alas del <span>Perú</span></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="especies.html" class="nav-link">Especies</a>
+        <a href="rutas.html" class="nav-link">Rutas de Birding</a>
+        <a href="avistamientos.html" class="nav-link">Avistamientos</a>
+        <a href="contacto.html" class="nav-link active">Contacto</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú" aria-expanded="false">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== CONTENIDO ==================== -->
+  <main>
+    <!-- BANNER DE PÁGINA -->
+    <section class="page-banner">
+      <div class="container">
+        <span class="badge badge-forest" style="margin-bottom: 0.5rem;">Comunidad & Conservación</span>
+        <h1>Únete a la Red de Conservación</h1>
+        <p>
+          ¿Quieres colaborar en censos de aves, sumarte a expediciones de voluntariado o consultar sobre rutas? Estamos a tu disposición.
+        </p>
+      </div>
+    </section>
+
+    <!-- FORMULARIO Y FAQ INTERACTIVO -->
+    <section style="padding: 3.5rem 0 4rem;">
+      <div class="container">
+        <div class="planner-grid">
+
+          <!-- COLUMNA IZQUIERDA: FORMULARIO INTERACTIVO (Con validación y contador) -->
+          <div>
+            <div class="form-card">
+              <span class="badge badge-forest" style="margin-bottom: 0.75rem;">Mensaje Directo</span>
+              <h2 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Formulario de Contacto</h2>
+              <p style="font-size: 0.875rem; margin-bottom: 1.5rem;">
+                Completa tus datos y nos comunicaremos contigo en menos de 24 horas:
+              </p>
+
+              <form id="contactForm">
+                <div class="form-group">
+                  <label for="contactName" class="form-label">Nombre y Apellidos: *</label>
+                  <input 
+                    type="text" 
+                    id="contactName" 
+                    class="form-control" 
+                    placeholder="Ej. Sofía Valenzuela" 
+                    required
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="contactEmail" class="form-label">Correo Electrónico: *</label>
+                  <input 
+                    type="email" 
+                    id="contactEmail" 
+                    class="form-control" 
+                    placeholder="ejemplo@correo.pe" 
+                    required
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="contactRole" class="form-label">Motivo de Contacto / Interés: *</label>
+                  <select id="contactRole" class="form-control" required>
+                    <option value="voluntariado">Quiero unirme como Voluntario de Campo</option>
+                    <option value="guia">Soy Guía Ornitológico y deseo registrar mi ruta</option>
+                    <option value="reporte">Reporte de Especie Amenazada o Herida</option>
+                    <option value="donacion">Alianzas y Apoyo a Proyectos de Conservación</option>
+                    <option value="consulta">Consulta General sobre Observación de Aves</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <label for="contactMessage" class="form-label">Mensaje o Propuesta: *</label>
+                    <small id="charCount" class="form-hint" style="font-weight: 600;">0 / 500 caracteres</small>
+                  </div>
+                  <textarea 
+                    id="contactMessage" 
+                    class="form-control" 
+                    maxlength="500"
+                    placeholder="Cuéntanos en qué región te encuentras o en qué proyecto deseas participar..." 
+                    required
+                  ></textarea>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                  <label class="checklist-item" style="border: none; padding: 0;">
+                    <input type="checkbox" id="contactConsent" required>
+                    <span style="font-size: 0.825rem; color: var(--text-secondary);">
+                      Acepto recibir convocatorias de avistamiento y boletines de conservación de aves peruanas.
+                    </span>
+                  </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="btnEnviarContacto" style="width: 100%;">
+                  Enviar Mensaje y Postulación 🚀
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- COLUMNA DERECHA: PREGUNTAS FRECUENTES (Acordeón interactivo) Y SEDES -->
+          <div>
+            <h2 style="margin-bottom: 1.5rem;">Preguntas Frecuentes (FAQ)</h2>
+
+            <!-- Acordeón interactivo -->
+            <div class="accordion" id="faqAccordion">
+
+              <!-- FAQ 1 -->
+              <div class="accordion-item active">
+                <div class="accordion-header">
+                  <span>¿Cuál es la mejor temporada para observar aves en el Perú?</span>
+                  <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-body" style="max-height: 200px;">
+                  <p style="font-size: 0.925rem; color: var(--text-secondary);">
+                    El Perú es un destino ornitológico de todo el año. Sin embargo, para la Sierra y Selva, la temporada seca (de mayo a octubre) ofrece mejores condiciones de sendero y acceso a bosques nublados. En la Costa, de noviembre a marzo abundan las aves playeras y migratorias del hemisferio norte.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ 2 -->
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <span>¿Qué es el Global Big Day y qué rol juega el Perú?</span>
+                  <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-body">
+                  <p style="font-size: 0.925rem; color: var(--text-secondary);">
+                    El Global Big Day es el torneo mundial de ciencia ciudadana más grande de conteo de aves en 24 horas. El Perú ha logrado coronarse como campeón mundial en múltiples ediciones, registrando más de 1,400 especies en un solo día gracias a la movilización de científicos, comunidades y aficionados.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ 3 -->
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <span>¿Necesito equipo costoso para empezar en el birdwatching?</span>
+                  <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-body">
+                  <p style="font-size: 0.925rem; color: var(--text-secondary);">
+                    ¡En lo absoluto! Para iniciarte solo necesitas unos binoculares básicos (8x42 son los más recomendados por su luminosidad), paciencia, ropa en tonos neutros o verdes que no asuste a las aves y ganas de aprender.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ 4 -->
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <span>¿Cómo reportar tráfico ilegal de fauna silvestre o aves en cautiverio?</span>
+                  <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-body">
+                  <p style="font-size: 0.925rem; color: var(--text-secondary);">
+                    En el Perú, el comercio y tenencia no autorizada de aves silvestres es un delito penado por ley. Puedes realizar denuncias directas y confidenciales ante el Servicio Nacional Forestal y de Fauna Silvestre (SERFOR) a través de su plataforma Alerta SERFOR o llamando a la Policía Ecológica (PNP).
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Datos de Contacto y Sedes -->
+            <div style="margin-top: 2.5rem; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.75rem;">
+              <h3 style="margin-bottom: 1rem; font-size: 1.15rem;">Puntos de Información Ornitológica</h3>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.9rem; color: var(--text-secondary);">
+                <div>
+                  <strong>📍 Sede Central Lima:</strong> Av. Los Conquistadores 450, San Isidro (Cerca a Pantanos de Villa)
+                </div>
+                <div>
+                  <strong>📍 Base Sur Cusco:</strong> Calle Triunfo 120, Cusco (Coordinación Valle Sagrado y Manu)
+                </div>
+                <div>
+                  <strong>📍 Base Norte Tarapoto:</strong> Jr. Moyobamba 310, San Martín (Ruta Huembo y Alto Mayo)
+                </div>
+                <div>
+                  <strong>✉️ Correo Institucional:</strong> contacto@alasdelperu.org.pe
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="brand-icon">🦜</div>
+            <span>Alas del <span>Perú</span></span>
+          </div>
+          <p>
+            Plataforma comprometida con la difusión, investigación y educación ambiental en torno a las aves del Perú.
+          </p>
+          <span class="badge badge-comun">Conservación Activa</span>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="especies.html">Catálogo de Especies</a></li>
+            <li><a href="rutas.html">Rutas de Birding</a></li>
+            <li><a href="avistamientos.html">Registro Comunitario</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Alianzas</h4>
+          <ul class="footer-links">
+            <li><a href="contacto.html">SERNANP Perú</a></li>
+            <li><a href="contacto.html">SERFOR</a></li>
+            <li><a href="contacto.html">BirdLife International</a></li>
+            <li><a href="contacto.html">Comunidades Nativas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Voluntariado</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+            Participa en salidas de campo y talleres educativos en escuelas rurales.
+          </p>
+          <a href="#contactForm" class="btn btn-primary btn-sm">Inscribirme</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Alas del Perú. Desarrollado con HTML5, CSS3 y JavaScript puro.</p>
+        <p>Unidos por la conservación del cielo andino y amazónico 🇵🇪</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

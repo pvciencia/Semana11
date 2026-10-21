@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rutas de Birdwatching en el Perú — Alas del Perú</title>
+  <meta name="description" content="Guía completa de las tres megarrutas de observación de aves en el Perú: Norte, Centro y Sur. Incluye planificador de expedición interactivo y checklist de equipo.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="site-header" id="mainHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Alas del Perú - Inicio">
+        <div class="brand-icon">🦜</div>
+        <span>Alas del <span>Perú</span></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="especies.html" class="nav-link">Especies</a>
+        <a href="rutas.html" class="nav-link active">Rutas de Birding</a>
+        <a href="avistamientos.html" class="nav-link">Avistamientos</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú" aria-expanded="false">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== CONTENIDO ==================== -->
+  <main>
+    <!-- BANNER DE PÁGINA -->
+    <section class="page-banner">
+      <div class="container">
+        <span class="badge badge-forest" style="margin-bottom: 0.5rem;">Ecoturismo Sostenible</span>
+        <h1>Megarrutas de Observación en el Perú</h1>
+        <p>
+          Tres circuitos reconocidos a nivel internacional que cruzan desiertos costeros, bosques secos, collados andinos y las cuencas amazónicas más prístinas.
+        </p>
+      </div>
+    </section>
+
+    <!-- PLANIFICADOR INTERACTIVO Y DETALLE DE RUTAS -->
+    <section style="padding: 3.5rem 0 4rem;">
+      <div class="container">
+        
+        <div class="planner-grid">
+          <!-- Columna Izquierda: Calculadora y Planificador Interactivo -->
+          <div>
+            <div class="form-card" style="position: sticky; top: 6rem;">
+              <span class="badge badge-forest" style="margin-bottom: 0.75rem;">Calculadora Interactiva</span>
+              <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Planificador de Expedición</h2>
+              <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">
+                Calcula el presupuesto estimado de logística y el potencial de avistamiento según tu itinerario.
+              </p>
+
+              <form id="expeditionForm" onsubmit="event.preventDefault();">
+                <div class="form-group">
+                  <label for="planRegion" class="form-label">Circuito / Región a Explorar:</label>
+                  <select id="planRegion" class="form-control">
+                    <option value="selva" selected>Ruta Norte / Amazonía (Abra Patricia - Tarapoto)</option>
+                    <option value="sierra">Ruta Sur / Andes y Manu (Cusco - Colca - Tambopata)</option>
+                    <option value="costa">Ruta Costera e Islas (Paracas - Pantanos de Villa)</option>
+                  </select>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="planDays" class="form-label">Días de Salida:</label>
+                    <input type="number" id="planDays" class="form-control" min="1" max="30" value="4">
+                  </div>
+                  <div class="form-group">
+                    <label for="planPeople" class="form-label">N° de Observadores:</label>
+                    <input type="number" id="planPeople" class="form-control" min="1" max="15" value="2">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="planLevel" class="form-label">Nivel de Expedición:</label>
+                  <select id="planLevel" class="form-control">
+                    <option value="iniciacion">Iniciación (Senderos sencillos y miradores)</option>
+                    <option value="medio" selected>Intermedio (Trekking de altura media y botes)</option>
+                    <option value="experto">Avanzado (Internamiento en selva virgen y collados)</option>
+                  </select>
+                </div>
+
+                <!-- Resumen de Costo y Potencial Dinámico -->
+                <div style="background: var(--bg-subtle); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0; border: 1px solid var(--border-light);">
+                  <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                    <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">PRESUPUESTO ESTIMADO:</span>
+                    <strong id="planCost" style="font-size: 1.6rem; color: var(--brand-forest); font-family: var(--font-heading);">S/ 2,240</strong>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">POTENCIAL DE ESPECIES:</span>
+                    <span id="planBirdsCount" style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">~180 especies potenciales</span>
+                  </div>
+                  <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem;">
+                    *Estimado referencial en Soles (PEN) que incluye guía ornitológico local, ingresos a reservas y movilidad interna.
+                  </p>
+                </div>
+
+                <!-- Checklist Interactivo de Equipamiento -->
+                <h4 style="font-size: 1rem; margin-bottom: 0.75rem;">Lista de Equipamiento Recomendado</h4>
+                <div id="plannerChecklist" style="margin-bottom: 1.5rem;">
+                  <!-- Renderizado dinámicamente con checkboxes interactivos -->
+                </div>
+
+                <a href="avistamientos.html" class="btn btn-primary" style="width: 100%;">
+                  Ir a Registrar Avistamientos ➜
+                </a>
+              </form>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Tarjetas de las Megarrutas -->
+          <div>
+            <h2 style="margin-bottom: 1.5rem;">Las 3 Grandes Megarrutas Peruanas</h2>
+
+            <!-- Ruta Norte -->
+            <article class="route-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <span class="badge badge-endemico">Mundialmente Famosa</span>
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--brand-forest);">Norte del Perú</span>
+              </div>
+              <h3>1. La Ruta del Norte: Paraíso de Endemismos</h3>
+              <p style="margin: 0.5rem 0 1rem;">
+                Abarca desde los manglares de Tumbes y el bosque seco de Chaparrí (Lambayeque), subiendo por el Abra Patricia hasta el valle del Alto Mayo y Tarapoto.
+              </p>
+              <div style="background: var(--bg-subtle); padding: 0.85rem 1rem; border-radius: var(--radius-sm); margin-bottom: 1rem; font-size: 0.875rem;">
+                <strong>Aves Estrella:</strong> Colibrí Maravilloso, Pava Aliblanca, Lechucita Bigotona (*Xenoglaux loweryi*), Tororoí Ocráceo.
+              </div>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <span class="badge badge-forest">Duración: 5-8 días</span>
+                <span class="badge badge-forest">Altitud: 0 - 2,800 msnm</span>
+              </div>
+            </article>
+
+            <!-- Ruta Sur -->
+            <article class="route-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <span class="badge badge-critico" style="background: rgba(234, 88, 12, 0.15); color: var(--brand-gallito);">Biodiversidad Extrema</span>
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--brand-forest);">Sur del Perú</span>
+              </div>
+              <h3>2. La Ruta del Sur: De los Andes al Manu</h3>
+              <p style="margin: 0.5rem 0 1rem;">
+                Una de las transectas con mayor gradiente altitudinal del planeta. Desciende desde el Cañón del Colca y el Valle Sagrado en Cusco, cruzando el bosque nublado de San Pedro hasta las llanuras amazónicas del Manu y Tambopata.
+              </p>
+              <div style="background: var(--bg-subtle); padding: 0.85rem 1rem; border-radius: var(--radius-sm); margin-bottom: 1rem; font-size: 0.875rem;">
+                <strong>Aves Estrella:</strong> Gallito de las Rocas en leks activos, Cóndor Andino, Guacamayos en colpas de arcilla, Águila Harpía.
+              </div>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <span class="badge badge-forest">Duración: 7-12 días</span>
+                <span class="badge badge-forest">Altitud: 250 - 4,800 msnm</span>
+              </div>
+            </article>
+
+            <!-- Ruta Centro -->
+            <article class="route-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <span class="badge badge-comun">Aventura de Altura</span>
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--brand-forest);">Centro del Perú</span>
+              </div>
+              <h3>3. La Ruta del Centro: Lagos Altoandinos y Selva Central</h3>
+              <p style="margin: 0.5rem 0 1rem;">
+                Partiendo de Lima, remonta la Cordillera Central pasando por Santa Eulalia, la meseta de Junín (Lago Chinchaycocha) y adentrándose en el valle cafetero de Chanchamayo y Oxapampa.
+              </p>
+              <div style="background: var(--bg-subtle); padding: 0.85rem 1rem; border-radius: var(--radius-sm); margin-bottom: 1rem; font-size: 0.875rem;">
+                <strong>Aves Estrella:</strong> Zambullidor de Junín (en peligro crítico), Remolinera Ventriblanca, Tángaras policromas de Oxapampa.
+              </div>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <span class="badge badge-forest">Duración: 4-6 días</span>
+                <span class="badge badge-forest">Altitud: 500 - 4,500 msnm</span>
+              </div>
+            </article>
+
+            <!-- Recomendaciones de Código de Ética -->
+            <div style="background: var(--bg-surface); border: 1px solid var(--border-light); border-left: 4px solid var(--brand-forest); border-radius: var(--radius-md); padding: 1.5rem; margin-top: 2rem;">
+              <h4 style="margin-bottom: 0.5rem;">🌿 Código de Ética del Observador de Aves</h4>
+              <ul style="padding-left: 1.25rem; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;">
+                <li>No utilizar grabaciones de cantos (playback) excesivo durante la época de anidación.</li>
+                <li>Mantener una distancia respetuosa de los nidos y colonias reproductivas.</li>
+                <li>No dejar basura ni residuos en los senderos naturales.</li>
+                <li>Contratar guías locales de las comunidades para fomentar el desarrollo sostenible.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="brand-icon">🦜</div>
+            <span>Alas del <span>Perú</span></span>
+          </div>
+          <p>
+            Plataforma para el fomento del ecoturismo responsable, la fotografía de naturaleza y el monitoreo de aves peruanas.
+          </p>
+          <span class="badge badge-comun">Conservación Activa</span>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="especies.html">Catálogo de Especies</a></li>
+            <li><a href="rutas.html">Rutas de Birding</a></li>
+            <li><a href="avistamientos.html">Registro Comunitario</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Destinos Top</h4>
+          <ul class="footer-links">
+            <li><a href="rutas.html">Abra Patricia (Amazonas)</a></li>
+            <li><a href="rutas.html">Parque Nacional del Manu</a></li>
+            <li><a href="rutas.html">Reserva Nacional de Paracas</a></li>
+            <li><a href="rutas.html">Lago Junín</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>¿Tienes preguntas?</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+            Consulta con nuestros especialistas ornitológicos sobre la mejor temporada para viajar.
+          </p>
+          <a href="contacto.html" class="btn btn-primary btn-sm">Contactar Asesor</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Alas del Perú. Desarrollado con HTML5, CSS3 y JavaScript puro.</p>
+        <p>Aves del Perú • Belleza viva de los Andes y la Amazonía</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alas del Perú — Santuario y Guía de Aves Peruanas</title>
+  <meta name="description" content="Descubre la extraordinaria biodiversidad de aves del Perú, segundo país con mayor diversidad aviar del planeta con más de 1,880 especies. Rutas de avistamiento, catálogo y comunidad.">
+  
+  <!-- Tipografías de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Estilos Globales -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==================== CABECERA / HEADER ==================== -->
+  <header class="site-header" id="mainHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Alas del Perú - Inicio">
+        <div class="brand-icon">🦜</div>
+        <span>Alas del <span>Perú</span></span>
+      </a>
+
+      <!-- Menú de Navegación -->
+      <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+        <a href="index.html" class="nav-link active">Inicio</a>
+        <a href="especies.html" class="nav-link">Especies</a>
+        <a href="rutas.html" class="nav-link">Rutas de Birding</a>
+        <a href="avistamientos.html" class="nav-link">Avistamientos</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+      </nav>
+
+      <!-- Botones de Acción y Selector de Tema -->
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar modo de color">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" aria-labelledby="heroHeading">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span>🇵🇪 Segundo país del mundo con mayor diversidad de aves</span>
+          </div>
+          <h1 class="hero-title" id="heroHeading">
+            El cielo peruano, hogar de más de <span class="highlight">1,880 especies</span> de aves
+          </h1>
+          <p class="hero-description">
+            Desde el majestuoso vuelo del Cóndor en los cañones andinos hasta el vibrante cortejo del Gallito de las Rocas en los bosques nublados. Explora el paraíso mundial del avistamiento de aves.
+          </p>
+          <div class="hero-actions">
+            <a href="especies.html" class="btn btn-primary" id="btnExploreSpecies">
+              Explorar Catálogo de Aves ➜
+            </a>
+            <a href="avistamientos.html" class="btn btn-outline" id="btnRegisterSighting">
+              Registrar Avistamiento
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card-featured">
+            <img src="gallito_rocas.jpg" alt="Gallito de las Rocas (Rupicola peruvianus), Ave Nacional del Perú" width="600" height="420">
+            <div class="hero-card-overlay">
+              <span class="badge badge-critico" style="background: rgba(234, 88, 12, 0.9); color: #fff; border: none; margin-bottom: 0.5rem;">Ave Nacional</span>
+              <h3>Gallito de las Rocas (Tunqui)</h3>
+              <p>Rupicola peruvianus • Joya escarlata de los bosques de neblina</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESTADÍSTICAS ANIMADAS (Función JS: Contadores dinámicos) -->
+    <section class="stats-section" aria-label="Estadísticas de la avifauna peruana">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">🪶</div>
+            <div class="stat-info">
+              <h3 class="stat-number" data-target="1884">0</h3>
+              <p>Especies de Aves Registradas</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">💎</div>
+            <div class="stat-info">
+              <h3 class="stat-number" data-target="131">0</h3>
+              <p>Especies Exclusivas (Endémicas)</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🗺️</div>
+            <div class="stat-info">
+              <h3 class="stat-number" data-target="76">0</h3>
+              <p>Áreas Naturales Protegidas</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🔭</div>
+            <div class="stat-info">
+              <h3 class="stat-number" data-target="3">0</h3>
+              <p>Megarrutas de Observación</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DESTACADA: REGIONES NATURALES -->
+    <section style="padding: 4.5rem 0; background: var(--bg-surface); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+      <div class="container">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto 3.5rem;">
+          <span class="badge badge-forest" style="margin-bottom: 0.75rem;">Hábitats Únicos</span>
+          <h2>Tres Regiones, Infinitos Cantos</h2>
+          <p>La geografía del Perú alberga desde las corrientes marinas frías de Humboldt hasta las cumbres glaciares y la inmensidad amazónica.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+          <!-- Costa -->
+          <div style="background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; padding: 2rem; display: flex; flex-direction: column;">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌊</div>
+            <h3>Costa e Islas Guaneras</h3>
+            <p style="margin: 0.75rem 0 1.5rem; flex: 1;">
+              Hogar del Pingüino de Humboldt, el Piquero Peruano y miles de aves marinas atraídas por la corriente rica en nutrientes.
+            </p>
+            <a href="especies.html" class="btn btn-outline btn-sm" style="align-self: flex-start;">Ver Aves de Costa ➜</a>
+          </div>
+
+          <!-- Sierra -->
+          <div style="background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; padding: 2rem; display: flex; flex-direction: column;">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">⛰️</div>
+            <h3>Andes y Punas Altoandinas</h3>
+            <p style="margin: 0.75rem 0 1.5rem; flex: 1;">
+              El reino del Cóndor Andino, flamencos o parihuanas de lagunas de altura y el colibrí gigante sobrevolando valles sagrados.
+            </p>
+            <a href="especies.html" class="btn btn-outline btn-sm" style="align-self: flex-start;">Ver Aves de Sierra ➜</a>
+          </div>
+
+          <!-- Selva -->
+          <div style="background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; padding: 2rem; display: flex; flex-direction: column;">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌳</div>
+            <h3>Amazonía y Bosques Nublados</h3>
+            <p style="margin: 0.75rem 0 1.5rem; flex: 1;">
+              El mayor espectáculo de color: guacamayos en colpas de arcilla, tucanes, tángaras y el endémico Colibrí Maravilloso.
+            </p>
+            <a href="especies.html" class="btn btn-outline btn-sm" style="align-self: flex-start;">Ver Aves de Selva ➜</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRIVIA INTERACTIVA (Función JS: Evaluación instantánea y sonido) -->
+    <section style="padding: 4.5rem 0;">
+      <div class="container" style="max-width: 800px;">
+        <div class="form-card" style="text-align: center; border: 2px solid var(--brand-forest-soft);">
+          <span class="badge badge-endemico" style="margin-bottom: 1rem;">Trivia Ornitológica</span>
+          <h2 style="margin-bottom: 0.75rem;">¿Sabes cuál es el Ave Nacional Oficial del Perú?</h2>
+          <p style="margin-bottom: 2rem;">Pon a prueba tus conocimientos sobre la biodiversidad del país:</p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+            <button class="btn btn-outline quiz-opt-btn" data-correct="false" id="quizBtnCondor">
+              🦅 El Cóndor Andino
+            </button>
+            <button class="btn btn-outline quiz-opt-btn" data-correct="true" id="quizBtnGallito">
+              🦜 El Gallito de las Rocas
+            </button>
+            <button class="btn btn-outline quiz-opt-btn" data-correct="false" id="quizBtnColibri">
+              🌺 El Colibrí Maravilloso
+            </button>
+          </div>
+
+          <div id="quizFeedback" style="display: none; padding: 1.25rem; border-radius: var(--radius-md); background: var(--bg-subtle); margin-top: 1rem; font-size: 1rem;"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== PIE DE PÁGINA / FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="brand-icon">🦜</div>
+            <span>Alas del <span>Perú</span></span>
+          </div>
+          <p>
+            Iniciativa educativa y comunitaria dedicada a difundir la belleza, conservación y avistamiento de aves en todo el territorio nacional del Perú.
+          </p>
+          <span class="badge badge-comun">Conservación Activa</span>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explorar</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="especies.html">Catálogo de Especies</a></li>
+            <li><a href="rutas.html">Rutas de Observación</a></li>
+            <li><a href="avistamientos.html">Registro de Campo</a></li>
+            <li><a href="contacto.html">Contacto y Voluntariado</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Regiones</h4>
+          <ul class="footer-links">
+            <li><a href="especies.html">Costa y Mar Frío</a></li>
+            <li><a href="especies.html">Andes y Quebradas</a></li>
+            <li><a href="especies.html">Selva Alta y Yungas</a></li>
+            <li><a href="especies.html">Llano Amazónico</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Conservación</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+            En alianza con directrices de protección del SERNANP y la Unión Internacional para la Conservación de la Naturaleza (UICN).
+          </p>
+          <a href="contacto.html" class="btn btn-primary btn-sm">Unirse como Voluntario</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Alas del Perú. Desarrollado con HTML5, CSS3 y JavaScript puro.</p>
+        <p>Promoviendo el turismo ornitológico responsable 🇵🇪</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script Global -->
+  <script src="script.js"></script>
+</body>
+</html>

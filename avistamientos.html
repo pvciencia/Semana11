@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuaderno de Campo y Avistamientos — Alas del Perú</title>
+  <meta name="description" content="Registra y consulta avistamientos de aves en tiempo real en todo el territorio peruano. Ciencia ciudadana y cuaderno de campo con almacenamiento local.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="site-header" id="mainHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Alas del Perú - Inicio">
+        <div class="brand-icon">🦜</div>
+        <span>Alas del <span>Perú</span></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="especies.html" class="nav-link">Especies</a>
+        <a href="rutas.html" class="nav-link">Rutas de Birding</a>
+        <a href="avistamientos.html" class="nav-link active">Avistamientos</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú" aria-expanded="false">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== CONTENIDO ==================== -->
+  <main>
+    <!-- BANNER DE PÁGINA -->
+    <section class="page-banner">
+      <div class="container">
+        <span class="badge badge-forest" style="margin-bottom: 0.5rem;">Ciencia Ciudadana</span>
+        <h1>Cuaderno de Campo Comunitario</h1>
+        <p>
+          Comparte tus encuentros con las aves del Perú. Cada registro contribuye al mapeo colectivo y a la conservación de nuestra biodiversidad.
+        </p>
+      </div>
+    </section>
+
+    <!-- FORMULARIO DE REGISTRO Y MURO DE AVISTAMIENTOS (Funciones Interactivas con localStorage) -->
+    <section style="padding: 3.5rem 0 4rem;">
+      <div class="container">
+        <div class="sightings-layout">
+
+          <!-- COLUMNA IZQUIERDA: FORMULARIO INTERACTIVO -->
+          <div>
+            <div class="form-card">
+              <span class="badge badge-forest" style="margin-bottom: 0.75rem;">Nuevo Registro</span>
+              <h2 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Añadir Avistamiento</h2>
+              <p style="font-size: 0.875rem; margin-bottom: 1.5rem;">
+                Ingresa los datos de tu observación de campo:
+              </p>
+
+              <form id="sightingForm">
+                <div class="form-group">
+                  <label for="sightEspecie" class="form-label">Especie Observada: *</label>
+                  <input 
+                    type="text" 
+                    id="sightEspecie" 
+                    class="form-control" 
+                    placeholder="Ej. Gallito de las Rocas, Cóndor, etc." 
+                    required
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="sightRegion" class="form-label">Ubicación / Lugar exacto: *</label>
+                  <input 
+                    type="text" 
+                    id="sightRegion" 
+                    class="form-control" 
+                    placeholder="Ej. Cusco (Machu Picchu), Paracas, Manu..." 
+                    required
+                  >
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="sightFecha" class="form-label">Fecha del avistamiento:</label>
+                    <input type="date" id="sightFecha" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="sightRareza" class="form-label">Frecuencia / Rareza:</label>
+                    <select id="sightRareza" class="form-control">
+                      <option value="Común">Frecuente / Común</option>
+                      <option value="Avistamiento Destacado" selected>Avistamiento Destacado</option>
+                      <option value="Raro y Endémico">Raro o Endémico</option>
+                      <option value="En Peligro">Especie Amenazada</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="sightObservador" class="form-label">Tu Nombre o Apodo:</label>
+                  <input 
+                    type="text" 
+                    id="sightObservador" 
+                    class="form-control" 
+                    placeholder="Ej. Martín R. (Observador aficionado)"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="sightNotas" class="form-label">Notas de Campo y Comportamiento: *</label>
+                  <textarea 
+                    id="sightNotas" 
+                    class="form-control" 
+                    placeholder="Describe qué estaba haciendo: vuelo, canto, alimentación, número de individuos..." 
+                    required
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="btnGuardarAvistamiento" style="width: 100%;">
+                  Guardar en Cuaderno de Campo 💾
+                </button>
+              </form>
+
+              <!-- Previsualización en Vivo de la Ficha -->
+              <div class="preview-box">
+                <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem;">
+                  👁️ Previsualización en Tiempo Real:
+                </span>
+                <strong id="prevBirdName" style="color: var(--brand-forest); display: block;">Nombre del ave observada</strong>
+                <small id="prevBirdLoc" style="color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">Lugar / Región</small>
+                <p id="prevBirdNotes" style="font-size: 0.85rem; margin: 0; font-style: italic; color: var(--text-muted);">
+                  Tus notas de campo aparecerán aquí a medida que escribes...
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- COLUMNA DERECHA: HISTORIAL Y FILTRO COMUNITARIO -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+              <h2>Avistamientos Recientes de la Comunidad</h2>
+              
+              <!-- Filtro rápido -->
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <label for="filterSightingRegion" style="font-size: 0.85rem; font-weight: 600; color: var(--text-secondary);">Filtrar por región:</label>
+                <select id="filterSightingRegion" class="form-control" style="width: auto; padding: 0.4rem 0.8rem; font-size: 0.85rem;">
+                  <option value="todas">Todas las regiones</option>
+                  <option value="Cusco">Cusco / Andes Sur</option>
+                  <option value="Arequipa">Arequipa / Colca</option>
+                  <option value="Amazonas">Amazonas / Norte</option>
+                  <option value="Paracas">Paracas / Costa</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Muro dinámico (alimentado desde localStorage y script.js) -->
+            <div class="sightings-timeline" id="sightingsTimeline">
+              <!-- Registros inyectados por script.js -->
+            </div>
+
+            <div style="margin-top: 2rem; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+              <span style="font-size: 2rem;">💡</span>
+              <p style="font-size: 0.875rem; margin: 0;">
+                Los registros se conservan guardados en el navegador mediante <code>localStorage</code>. Puedes registrar nuevas observaciones o eliminar las que consideres oportunas en cualquier momento.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="brand-icon">🦜</div>
+            <span>Alas del <span>Perú</span></span>
+          </div>
+          <p>
+            Red peruana de ciencia ciudadana para el registro, estudio y protección de las especies ornitológicas del Perú.
+          </p>
+          <span class="badge badge-comun">Conservación Activa</span>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="especies.html">Catálogo de Especies</a></li>
+            <li><a href="rutas.html">Rutas de Birding</a></li>
+            <li><a href="avistamientos.html">Registro Comunitario</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Comunidad</h4>
+          <ul class="footer-links">
+            <li><a href="avistamientos.html">Últimos Avistamientos</a></li>
+            <li><a href="rutas.html">Guía de Campo</a></li>
+            <li><a href="contacto.html">Club de Observadores</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Participa</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+            Sé parte de los censos anuales organizados en el marco del Global Big Day.
+          </p>
+          <a href="contacto.html" class="btn btn-primary btn-sm">Sumarme al Club</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Alas del Perú. Desarrollado con HTML5, CSS3 y JavaScript puro.</p>
+        <p>Monitoreo ciudadano para la conservación de la avifauna peruana</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
