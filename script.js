@@ -484,7 +484,10 @@ function initPlanner() {
     { id: "calzado", label: "Botas de trekking con agarre para barro y roca", checked: true },
     { id: "repelente", label: "Repelente orgánico y bloqueador solar biodegradable", checked: false },
     { id: "impermeable", label: "Poncho o chaqueta impermeable transpirable", checked: false },
-    { id: "libreta", label: "Libreta de campo impermeable o app de notas eBird", checked: false }
+    { id: "libreta", label: "Libreta de campo impermeable o app de notas eBird", checked: false },
+    { id: "botellas", label: "Botellas de agua resistentes", checked: true },
+    { id: "latas", label: "Latas de atún para el picnic", checked: true },
+    { id: "paraguas", label: "traer paraguas para las lluvias", checked: true }
   ];
 
   function renderChecklist() {
