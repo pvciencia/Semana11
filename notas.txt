@@ -1,0 +1,10 @@
+# Documentación del módulo de Login
+Este módulo se encarga de autenticar a los usuarios del sistema.
+
+CÓDIGO SIMULADO:
+function iniciarSesion(usuario, contrasenia) {
+    if (usuario === "admin" && contrasenia === "1234") {
+        return "Acceso concedido";
+    }
+    return "Credenciales incorrectas";
+}
