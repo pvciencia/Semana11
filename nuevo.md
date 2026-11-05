@@ -1,2 +1,2 @@
 # Mi Proyecto
-Este es el texto original en la rama main.
+Texto exclusivo de la rama B.
