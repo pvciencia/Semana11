@@ -1,2 +1,2 @@
 # Mi Proyecto
-Texto exclusivo de la rama A.
+Texto de la rama A y B.
